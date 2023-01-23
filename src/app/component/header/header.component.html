@@ -1,3 +1,12 @@
 <header class="">
-
+  <mat-toolbar color="primary" r>
+    <span>Cardvisit</span>
+    <span class="example-spacer"></span>
+    <ul class="header-menu">
+      <li >
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact : true }">Anasayfa</a></li>
+      <li><a routerLink="/about" routerLinkActive="active" [routerLinkActiveOptions]="{ exact : true }">About</a></li>
+      <li><a routerLink="/cards" routerLinkActive="active" [routerLinkActiveOptions]="{ exact : true }">Cards</a></li>
+    </ul>
+  </mat-toolbar>
 </header>
