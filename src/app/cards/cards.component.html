@@ -11,8 +11,8 @@
   <hr>
   <div class="cards">
     <div class="row">
-      <div class="col-12 col-md-10">
-        <app-card-item [card]="cardItem"></app-card-item>
+      <div class="col-12 col-md-10" *ngFor="let card of cards">
+        <app-card-item [card]="card"></app-card-item>
       </div>
     </div>
   </div>

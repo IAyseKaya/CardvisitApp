@@ -7,6 +7,7 @@ import { HomeComponent } from './component/home/home.component';
 import { AboutComponent } from './component/about/about.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {HttpClientModule} from "@angular/common/http";
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,9 +19,15 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatToolbarModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: 'apiUrl',
+      useValue: 'https://demo.limantech.com/cards/public/api'
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
