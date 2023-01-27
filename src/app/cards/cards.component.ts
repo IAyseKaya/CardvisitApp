@@ -21,9 +21,12 @@ ngOnInit() : void {
 }
 
 openAddCardModal():void{
-  this.dialog.open(CardModalComponent,
-    {width: '800px'});
-
+  const dialog = this.dialog.open(CardModalComponent);
+  dialog.afterClosed().subscribe(res =>{
+    if(res){
+      this.getCard();
+    }
+  });
 }
 getCard(){
   this.cardService.getCards().subscribe(  (res:Card[]) =>

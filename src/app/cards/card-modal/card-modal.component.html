@@ -1,8 +1,39 @@
 <h2 mat-dialog-title>New Card</h2>
-<mat-dialog-content class="mat-typography">
-
+<mat-dialog-content class="form align-items-center">
+<form class=" align-items-center" [formGroup]="cardForm"  >
+  <div class="div">
+    <mat-form-field class="example-full-width">
+    <mat-label>Title</mat-label>
+    <input formControlName="title" matInput placeholder="Title" >
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field class="example-full-width">
+      <mat-label>Name</mat-label>
+      <input formControlName="name" matInput placeholder="Name">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field class="example-full-width">
+      <mat-label>Phone Number</mat-label>
+      <input formControlName="phone" matInput placeholder="Phone Number" >
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field class="example-full-width">
+      <mat-label>E-mail</mat-label>
+      <input formControlName="email" matInput placeholder="someone@example.com">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field class="example-full-width">
+      <mat-label>Address</mat-label>
+      <textarea formControlName="address" matInput placeholder="Address"></textarea>
+    </mat-form-field>
+  </div>
+</form>
 </mat-dialog-content>
 <mat-dialog-actions align="end" class="align-items-end">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="true">Add</button>
+  <button mat-button (click)="addCard()"  >Add</button>
 </mat-dialog-actions>
