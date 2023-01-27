@@ -1,13 +1,18 @@
 <main>
-  <h1 class="page-title">Cards</h1>
-  <p class="page-description">
-    Cardvisit app Cards
-  </p>
+    <div class="d-flex align-items-center " >
+      <div class="flex-grow-1">
+        <h1 class="page-title">Cards</h1>
+        <p class="page-description">
+          Cardvisit app Cards
+        </p>
+      </div>
+      <button mat-flat-button color="primary" (click)="openAddCardModal()">Add Card</button>
+    </div>
   <hr>
   <div class="cards">
     <div class="row">
       <div class="col-12 col-md-10">
-        <app-card-item [card] ='cardItem'></app-card-item>
+        <app-card-item [card]="cardItem"></app-card-item>
       </div>
     </div>
   </div>
