@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Card} from "../../models/card";
+import {MatDialog} from "@angular/material/dialog";
+import {CardModalComponent} from "../card-modal/card-modal.component";
 
 @Component({
   selector: 'app-card-item',
@@ -9,8 +11,15 @@ import {Card} from "../../models/card";
 export class CardItemComponent implements OnInit{
 @Input() card!: Card;
 
-constructor() {
+constructor(
+  private dialog : MatDialog
+) {}
+ngOnInit() : void {
 }
-ngOnInit() {
+openUpdateCardModal(card : Card) : void {
+  this.dialog.open(CardModalComponent ,{
+    width : '500px',
+    data : card
+});
 }
 }

@@ -8,18 +8,26 @@ import {Card} from "../models/card";
 })
 export class CardService {
 
+  cards!: Card[];
+
   constructor(
     // app.module deki provide olan apiUrl i dosyaya getirmek için inject kullanıldı
     @Inject('apiUrl') private apiUrl : string,
     private http: HttpClient
   ) { }
-  getCards() : Observable<Card[]>{
-  return this.http.get<Card[]>( this.apiUrl + '/cards');
+  getCards() : void{
+  this.http.get<Card[]>( this.apiUrl + '/cards')
+    .subscribe((res : Card[]) => {
+      this.cards = res;
+    });
 
   }
-  addCard(card : Card){
-    return this.http.post(this.apiUrl + '/cards', card );
+  addCard(card : Card) : Observable<any>{
+    return this.http.post(this.apiUrl + '/cards' , card );
   }
 
+  updateCard(card : Card , cardId : number) : Observable<any>{
+    return this.http.put(this.apiUrl + '/cards/' + cardId ,card );
+  }
 
 }

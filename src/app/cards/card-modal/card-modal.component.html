@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>New Card</h2>
+<h2 mat-dialog-title> {{data? 'Update Card': 'New Card'}}</h2>
 <mat-dialog-content class="form align-items-center">
 <form class=" align-items-center" [formGroup]="cardForm"  >
   <div class="div">
@@ -35,5 +35,5 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end" class="align-items-end">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button (click)="addCard()"  >Add</button>
+  <button mat-button (click)="data ? updateCard() : addCard()">{{data? 'Update': 'Add'}}</button>
 </mat-dialog-actions>

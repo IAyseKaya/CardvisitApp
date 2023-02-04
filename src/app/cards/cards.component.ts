@@ -14,25 +14,15 @@ export class CardsComponent implements OnInit{
   cards !: Card[];
 constructor(
   public dialog:MatDialog,
-  private cardService:CardService,
+  public cardService:CardService,
 ) {}
 ngOnInit() : void {
-  this.getCard();
+  this.cardService.getCards();
 }
 
 openAddCardModal():void{
-  const dialog = this.dialog.open(CardModalComponent);
-  dialog.afterClosed().subscribe(res =>{
-    if(res){
-      this.getCard();
-    }
+  this.dialog.open(CardModalComponent ,{
+   width : '500px'
   });
-}
-getCard(){
-  this.cardService.getCards().subscribe(  (res:Card[]) =>
-  {
-    console.log('data ');
-    this.cards = res;
-  })
 }
 }
