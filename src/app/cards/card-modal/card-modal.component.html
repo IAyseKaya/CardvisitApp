@@ -34,6 +34,12 @@
 </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end" class="align-items-end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button (click)="data ? updateCard() : addCard()">{{data? 'Update': 'Add'}}</button>
+  <div class="flex-grow-1 text-start">
+    <button mat-button color="warn" *ngIf="data" (click)="deleteCard()">Delete</button>
+  </div>
+  <div>
+    <button mat-button color="primary" mat-dialog-close>Cancel</button>
+    <button mat-flat-button color="primary" (click)="data ? updateCard() : addCard()">{{data? 'Update': 'Add'}}</button>
+  </div>
+
 </mat-dialog-actions>
