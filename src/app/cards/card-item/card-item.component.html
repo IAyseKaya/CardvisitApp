@@ -16,7 +16,7 @@
             </li>
             <li class="list-group-item">
               <span *ngIf="card.address">{{card.address}}</span>
-              <small class="list-group-item" *ngIf="!card.address">
+              <small class="text-warning" *ngIf="!card.address">
                 Address undefined.
               </small>
             </li>

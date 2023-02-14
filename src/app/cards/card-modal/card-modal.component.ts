@@ -4,6 +4,7 @@ import {CardService} from "../../services/card.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Card} from "../../models/card";
+import {SnackbarService} from "../../services/snackbar.service";
 
 @Component({
   selector: 'app-card-modal',
@@ -13,8 +14,13 @@ import {Card} from "../../models/card";
 export class CardModalComponent implements OnInit{
 
   cardForm !: FormGroup;
+  showSpinner : boolean = false;
+
+
+
   constructor(
     private _snackBar: MatSnackBar,
+    private snackbarServices : SnackbarService,
     private dialogRef : MatDialogRef<CardModalComponent>,
     private fb:FormBuilder,
     private cardService: CardService,
@@ -31,40 +37,49 @@ export class CardModalComponent implements OnInit{
     });
   }
   addCard() : void {
+    this.showSpinner = true;
   console.log(this.cardForm.value);
   this.cardService.addCard(this.cardForm.value)
     .subscribe((res:any) =>
   {
-    console.log(this.cardForm.value);
-    this._snackBar.open(res|| 'Card Added','' , {
-      duration:4000,
-    })
-    this.cardService.getCards(); // ekranda eklenen kartı anında göstermek için
-    this.dialogRef.close();
-  });
+    this.getSuccess(res || 'Cardvisit Added.')
+  },(err : any) => {
+      this.getError(err.message || 'An Error Occured.' )
+    });
   }
 
   updateCard() {
+    this.showSpinner = true;
   this.cardService.updateCard( this.cardForm.value, this.data.id)
     .subscribe( (res : any) =>
     {
-      this._snackBar.open(res|| 'Card Updated','' , {
-        duration:4000,
-      })
-      this.cardService.getCards(); // ekranda güncelleme işlemini anında göstermek için
-      this.dialogRef.close();
+      this.getSuccess(res || 'Cardvisit Updated.')
+    } ,(err : any) => {
+      this.getError(err.message || 'An Error Occured.' )
     });
   }
 
 
-  deleteCard(){
+  deleteCard() : void{
+    this.showSpinner = true;
     this.cardService.deleteCard(this.data.id)
       .subscribe((res:any) => {
-        this._snackBar.open(res|| 'Card Deleted','' , {
-          duration:4000,
-        });
-        this.cardService.getCards(); // ekranda güncelleme işlemini anında göstermek için
-        this.dialogRef.close();
+       this.getSuccess(res || 'Cardvisit Deleted.')
+      },(err : any) => {
+        this.getError(err.message || 'An Error Occured.' )
       });
   }
+  getSuccess(message :string) : void{
+    this.snackbarServices.createSnackbar('success' , message , 9999999);
+    this.cardService.getCards();// ekranda güncelleme işlemini anında göstermek için
+    this.showSpinner = false;
+    this.dialogRef.close(); // açılan ekranın kapanması
+  }
+  getError(message : string) : void{
+    this.snackbarServices.createSnackbar('error' ,message);
+    this.cardService.getCards();// ekranda güncelleme işlemini anında göstermek için
+    this.showSpinner = false;
+    this.dialogRef.close();
+  }
+//1.44 dk
 }

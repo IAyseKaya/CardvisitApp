@@ -11,6 +11,14 @@
   <hr>
   <div class="cards">
     <div class="row">
+      <div class="col-12" *ngIf="!cardService.cards">
+        <span> Loading...</span>
+      </div>
+      <div class="col-12" *ngIf="cardService.cards?.length === 0">
+        <span> There is no card, You can add a new card by <a class="text-primary" (click)="openAddCardModal()">
+          clicking here
+        </a></span>
+      </div>
       <div class="col-12 col-md-10" *ngFor="let card of cardService.cards">
         <app-card-item [card]="card"></app-card-item>
       </div>

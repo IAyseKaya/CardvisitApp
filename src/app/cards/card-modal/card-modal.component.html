@@ -1,5 +1,10 @@
 <h2 mat-dialog-title> {{data? 'Update Card': 'New Card'}}</h2>
 <mat-dialog-content class="form align-items-center">
+  <div *ngIf="showSpinner">
+    <br>
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    <br>
+  </div>
 <form class=" align-items-center" [formGroup]="cardForm"  >
   <div class="div">
     <mat-form-field class="example-full-width">
@@ -9,8 +14,8 @@
   </div>
   <div>
     <mat-form-field class="example-full-width">
-      <mat-label>Name</mat-label>
-      <input formControlName="name" matInput placeholder="Name">
+      <mat-label>Name-Surname or Company Name</mat-label>
+      <input formControlName="name" matInput placeholder="Name-Surname or Company Name">
     </mat-form-field>
   </div>
   <div>
@@ -35,11 +40,11 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end" class="align-items-end">
   <div class="flex-grow-1 text-start">
-    <button mat-button color="warn" *ngIf="data" (click)="deleteCard()">Delete</button>
+    <button mat-button color="warn" *ngIf="data" (click)="deleteCard()"  [disabled] = " showSpinner ">Delete</button>
   </div>
   <div>
     <button mat-button color="primary" mat-dialog-close>Cancel</button>
-    <button mat-flat-button color="primary" (click)="data ? updateCard() : addCard()">{{data? 'Update': 'Add'}}</button>
+    <button mat-flat-button color="primary" (click)="data ? updateCard() : addCard()" [disabled] = "cardForm.invalid || showSpinner ">{{data? 'Update': 'Add'}}</button>
   </div>
 
 </mat-dialog-actions>
