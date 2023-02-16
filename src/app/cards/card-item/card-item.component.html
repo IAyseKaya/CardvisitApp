@@ -1,22 +1,22 @@
- <mat-card class="card-item">
-        <mat-card-header (click)="openUpdateCardModal(card)">
+ <mat-card class="card-item" >
+        <mat-card-header style="color: #6A95A8" (click)="openUpdateCardModal(card)">
           <mat-card-title>{{card.name || '-' }}</mat-card-title>
           <mat-card-subtitle>{{card.title}}</mat-card-subtitle>
         </mat-card-header>
-        <mat-card-content>
+        <mat-card-content >
           <ul class="list-group list-group-flush">
             <li class="list-group-item" >Phone Number: {{card.phone}}</li>
             <li class="list-group-item" >
               <span *ngIf="card.email">
               {{card.email}}
               </span>
-              <small class="text-warning" *ngIf="!card.email">
+              <small  style="color: #6A95A8" *ngIf="!card.email">
                 E mail undefined.
               </small>
             </li>
             <li class="list-group-item">
               <span *ngIf="card.address">{{card.address}}</span>
-              <small class="text-warning" *ngIf="!card.address">
+              <small style="color: #6A95A8" *ngIf="!card.address">
                 Address undefined.
               </small>
             </li>

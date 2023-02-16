@@ -1,12 +1,18 @@
 <main>
-    <div class="d-flex align-items-center " >
-      <div class="flex-grow-1">
-        <h1 class="page-title">Cards</h1>
+    <div class="d-flex align-items" >
+      <div class="col-md-3">
+        <h1 class="page-title" style="color: #6A95A8">Cards</h1>
         <p class="page-description">
           Cardvisit app Cards
         </p>
       </div>
-      <button mat-flat-button color="primary" (click)="openAddCardModal()">Add Card</button>
+      <div class="col-md-6">
+      <app-card-search></app-card-search>
+      </div>
+      <div class="col-md-1"></div>
+      <div class="col-md-2">
+      <button mat-flat-button class="align-items" style="min-height: 56px ;margin-left: 10px ; background: #6A95A8; color: #ffffff " (click)="openAddCardModal()">Add Card</button>
+    </div>
     </div>
   <hr>
   <div class="cards">
@@ -19,7 +25,7 @@
           clicking here
         </a></span>
       </div>
-      <div class="col-12 col-md-10" *ngFor="let card of cardService.cards">
+      <div class="col-12 col-md-4" *ngFor="let card of cardService.filteredCards">
         <app-card-item [card]="card"></app-card-item>
       </div>
     </div>

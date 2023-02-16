@@ -9,6 +9,7 @@ import {Card} from "../models/card";
 export class CardService {
 
   cards!: Card[];
+  filteredCards!: Card[];
 
   constructor(
     // app.module deki provide olan apiUrl i dosyaya getirmek için inject kullanıldı
@@ -18,7 +19,7 @@ export class CardService {
   getCards() : void{
   this.http.get<Card[]>( this.apiUrl + '/cards')
     .subscribe((res : Card[]) => {
-      this.cards = res;
+      this.cards = this.filteredCards = res;
     });
 
   }

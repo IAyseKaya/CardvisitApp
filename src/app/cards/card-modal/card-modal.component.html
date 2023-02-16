@@ -1,4 +1,4 @@
-<h2 mat-dialog-title> {{data? 'Update Card': 'New Card'}}</h2>
+<h2 mat-dialog-title style="color: #6A95A8"> {{data? 'Update Card': 'New Card'}}</h2>
 <mat-dialog-content class="form align-items-center">
   <div *ngIf="showSpinner">
     <br>
@@ -8,31 +8,31 @@
 <form class=" align-items-center" [formGroup]="cardForm"  >
   <div class="div">
     <mat-form-field class="example-full-width">
-    <mat-label>Title</mat-label>
-    <input formControlName="title" matInput placeholder="Title" >
+    <mat-label style="color: #6A95A8" >Company Name or Description</mat-label>
+    <input formControlName="title" matInput placeholder="Company Name or Description" >
     </mat-form-field>
   </div>
   <div>
     <mat-form-field class="example-full-width">
-      <mat-label>Name-Surname or Company Name</mat-label>
-      <input formControlName="name" matInput placeholder="Name-Surname or Company Name">
+      <mat-label style="color: #6A95A8" >Name Surname</mat-label>
+      <input formControlName="name" matInput placeholder="Name Surname">
     </mat-form-field>
   </div>
   <div>
     <mat-form-field class="example-full-width">
-      <mat-label>Phone Number</mat-label>
+      <mat-label style="color: #6A95A8" >Phone Number</mat-label>
       <input formControlName="phone" matInput placeholder="Phone Number" >
     </mat-form-field>
   </div>
   <div>
     <mat-form-field class="example-full-width">
-      <mat-label>E-mail</mat-label>
+      <mat-label style="color: #6A95A8" >E-mail</mat-label>
       <input formControlName="email" matInput placeholder="someone@example.com">
     </mat-form-field>
   </div>
   <div>
     <mat-form-field class="example-full-width">
-      <mat-label>Address</mat-label>
+      <mat-label style="color: #6A95A8" >Address</mat-label>
       <textarea formControlName="address" matInput placeholder="Address"></textarea>
     </mat-form-field>
   </div>
@@ -43,8 +43,8 @@
     <button mat-button color="warn" *ngIf="data" (click)="deleteCard()"  [disabled] = " showSpinner ">Delete</button>
   </div>
   <div>
-    <button mat-button color="primary" mat-dialog-close>Cancel</button>
-    <button mat-flat-button color="primary" (click)="data ? updateCard() : addCard()" [disabled] = "cardForm.invalid || showSpinner ">{{data? 'Update': 'Add'}}</button>
+    <button mat-button style="color: #6A95A8" mat-dialog-close>Cancel</button>
+    <button mat-flat-button style="background: #6A95A8 ; color: #ffffff"  (click)="data ? updateCard() : addCard()" [disabled] = "cardForm.invalid || showSpinner ">{{data? 'Update': 'Add'}}</button>
   </div>
 
 </mat-dialog-actions>
